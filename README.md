@@ -9,7 +9,7 @@
 ## What is one Computer Graphics-related skill or interest each of them has?
 
 - Nathan has an avid interest in video games and is eager to learn more about ray casting.
-- Quan who has an interest in Adobe Illustrator.
+- Quan has an interest in Adobe Illustrator.
 - James, like me, shares a heavy interest in game development.
 
 ## If you could explore any magical realm in the world, where would it be and why?
