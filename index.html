@@ -1,10 +1,20 @@
 <!DOCTYPE html>
 <html>
+<meta>
+    <link rel="stylesheet" type="text/css" href="[style.css]">
+</meta>
 <head>
     <title>[andrewcip.github.io]</title>
 </head>
 <body>
     <h1>[Welcome to my page!]</h1>
     <p>[Learn more about me...]</p>
+    <button onclick="castSpell()">Click to Cast a Spell!</button>
+    <p id="spellResult"></p>
+    <script>
+    function castSpell() {
+        document.getElementById("spellResult").innerText = "Your spell has been cast successfully!";
+    }
+    </script>
 </body>
 </html>
