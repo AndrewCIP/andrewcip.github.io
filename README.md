@@ -13,4 +13,4 @@
 - James, like me, shares a heavy interest in game development.
 
 ## If you could explore any magical realm in the world, where would it be and why?
-I would love to visit Japan because the country is home to many large gaming companies, amazing food, and interesting culture. I've never had the chance to travel outside of the United States and have many places I like to visit, but Japan would definitely be the first.
+I would love to visit Japan because the country is home to many large gaming companies, amazing food, and interesting culture. I've never had the chance to travel outside of the United States and have many places I'd like to visit, but Japan would definitely be at the top of my list.
