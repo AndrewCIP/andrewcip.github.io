@@ -36,7 +36,7 @@ Something I thought that was impressive from me was that I enabled my geometry-b
 
 ---
 
-## Arcane Planetarium (Project 2 Requirements Completed):
+## Summoning Gate (Project 3 Requirements Completed):
 - Grid of Life Implemented
 - Cells Randominzed and at least 256x256
 - Render Cells Using Fragment Shader; 2 Colors For Live and Dead State Respectively
