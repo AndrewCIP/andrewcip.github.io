@@ -33,3 +33,19 @@ Something I thought that was impressive from me was that I enabled my geometry-b
 - A complete solar system animation (sun and the eight planets).
 - At least one planet orbits the sun.
 - At least one moon orbits around a planet.
+
+---
+
+## Arcane Planetarium (Project 2 Requirements Completed):
+- Grid of Life Implemented
+- Cells Randominzed and at least 256x256
+- Render Cells Using Fragment Shader; 2 Colors For Live and Dead State Respectively
+- Using Keyboard to Resume/Pause/Reset
+- Using Keyboard to Speedup/Slowdown Simulation
+- Camera Moves Left/Right/Up/Down
+- Camera Zooms In/Out
+  - Camera Won't Zoom Out Beyond Original Scale...But Still Is Able To Move Out-Of-Bounds
+- Run at Real Time w/ Large Grid of 2048/2048
+- Use Mouse Input to Toggle Cells
+  - Best Seen During Pause, However First Click Renders All Cells Before Only Changing The Selected Cell 
+- Render Instruction Text Box
