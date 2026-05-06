@@ -112,3 +112,18 @@ Something I thought that was impressive from me was that I enabled my geometry-b
 - Implement and demonstrate environment mapping (aka cube mapping or spherical mapping) to simulate an environment
 - Implement and demonstrate procedural textures
   - Did Checkerboard
+
+---
+
+## Shadows, Reflection, and Refraction (Project 9 Requirements Completed):
+- Implement and demonstrate hard shadows (shadow ray test)
+- Implement and demonstrate soft shadows using area light sampling
+- Implement and demonstrate soft shadows using Percentage-Closer Filtering (PCF)
+- Implement and demonstrate soft shadows using distance-based techniques
+- Implement and demonstrate Signed Distance Field (SDF) soft shadows.
+- Implement and demonstrate perfect mirror reflection
+- Implement and demonstrate reflections with multiple bounces (iterative ray tracing)
+- Implement and demonstrate basic refraction using Snell's Law
+- Implement and demonstrate refractions with multiple bounces (iterative ray tracing)
+- Implement and demonstrate soft shadows for transparent objects
+- Create a scene featuring both reflections and refractions (e.g., a glass sphere on a reflective surface).
