@@ -49,3 +49,49 @@ Something I thought that was impressive from me was that I enabled my geometry-b
 - Use Mouse Input to Toggle Cells
   - Best Seen During Pause, However First Click Renders All Cells Before Only Changing The Selected Cell 
 - Render Instruction Text Box
+
+---
+
+## Firework Particles (Project 4 Requirements Completed):
+- Set up particle-system physics in compute shaders (initial particles, emitters, etc.)
+- Introduce forces such as gravity, wind, or a central attraction force to influence particle motion
+- Add a lifespan for particles (remove them as they age) and enforce a maximum particle count
+- Update particle positions based on velocity and acceleration (forces)
+- Implement a circular boundary condition (particles that go off screen wrap around to the other side)
+- Use mouse and/or keyboard interaction to spawn or attract particles
+- Create a recognizable effect such as fireworks, smoke, or water.
+- Apply non-linear interpolation.
+- Compose a scene that has at least two different effects. You do not need to implement both systems; you can reuse one system to design a secondary effect
+- Run in real time even with a large number of particles (e.g., >= 10,000)
+
+---
+
+## Raycasting and Ray-Object Intersection (Project 6 Requirements Completed):
+- Implement ray generation using a pinhole camera model and show correct projective camera results
+- Implement camera translation control and show correct interaction results
+- Implement camera rotation control and show correct interaction results
+- For a projective camera, implement camera focal change and show correct interaction results
+- Implement at least one object translation control and show correct interaction results
+- Implement at least one object rotation control and show correct interaction results
+- Color the intersection results using the hit value (for example, smaller as red, larger as blue, no hit as black) so depth is easy to perceive
+- Show intersection results with at least three different shapes
+- Implement a ray-cube intersection and display the intersection results on screen
+- Implement a ray-sphere intersection and display the intersection results on screen
+- Implement a ray-cylinder intersection and display the intersection results on screen
+- Implement a ray-cone intersection and display the intersection results on screen
+
+---
+
+## Volume Rendering & Minecraft Voxel Generation (Project 7 Requirements Completed):
+- mplement ray marching using either an orthogonal camera or a pinhole camera model and show correct basic volume rendering (e.g. using maximum intensity as the transfer function)
+- Customize the volume data loader to load new volume data (i.e. showing a different data loaded and visualized)
+- Procedural generation of volume data. (i.e. showing a different data generated and visualized)
+- Implement the linear transfer function and correctly visualize the results
+- Implement the piecewise linear transfer function to visualize more appealing results
+- (Repeatable, 1 point per transfer function) Design and implement a new transfer function and produce interesting results (e.g. a gradient transfer function to highlightt the edges)
+  - Done multiple functions
+- (Repeatable, 1 point per terrain) Use volume rendering to implement and visualize a (Perlin noise-based) terrain
+  - Grass, Rock/Dirt, Water, Snow
+- (Repeatable, 1 point per effect) Use volume rendering to implement and visualize a (Perlin noise-based) special effects e.g. cloud, fog, fire, etc.
+  - Clouds, fire, smoke (Non-dynamic)
+- Compose an interesting 3D scene
