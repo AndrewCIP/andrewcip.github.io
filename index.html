@@ -112,7 +112,7 @@
     its potential.</p>
     <button onclick="_0x102641()">Click to Cast a Spell!</button>
     <p id="spellResult"></p>
-    <script src="spell.min.js"></script>
+    <script src="spell.min.js" defer></script>
     <hr>
 
     <h4>Arcane Arts Demonstrations</h4>
@@ -165,127 +165,131 @@
     individual colors.</p>
 
     <script>
-        /* ── Tab switching ── */
-        function showTab(tab) {
-            document.querySelectorAll('.tab-btn').forEach(function (btn) {
-                btn.classList.remove('active');
-            });
-            document.querySelectorAll('.nav-panel').forEach(function (panel) {
-                panel.classList.remove('active');
-            });
-            document.getElementById('tab-' + tab).classList.add('active');
-            document.getElementById('panel-' + tab).classList.add('active');
-        }
-
-        /* ── Canvas particle system ── */
-        var canvas = document.getElementById('particleCanvas');
-        var ctx = canvas.getContext('2d');
-
-        var mouseX = window.innerWidth / 2;
-        var mouseY = window.innerHeight / 2;
-        var centerX = mouseX;
-        var centerY = mouseY;
-        var isOverButton = false;
-        var globalHue = 0;
-        var lastTime = null;
-
-        function resizeCanvas() {
-            canvas.width = window.innerWidth;
-            canvas.height = window.innerHeight;
-        }
-        resizeCanvas();
-        window.addEventListener('resize', resizeCanvas);
-
-        window.addEventListener('mousemove', function (e) {
-            mouseX = e.clientX;
-            mouseY = e.clientY;
-        });
-
-        /* Attach button hover listeners after DOM is ready */
-        document.querySelectorAll('button').forEach(function (btn) {
-            btn.addEventListener('mouseenter', function () { isOverButton = true; });
-            btn.addEventListener('mouseleave', function () { isOverButton = false; });
-        });
-
-        /* Orbit ring definitions: radius, particle count, initial phase */
-        var rings = [
-            { radius: 40,  count: 7,  phaseOffset: 0 },
-            { radius: 78,  count: 11, phaseOffset: 1.1 },
-            { radius: 118, count: 10, phaseOffset: 0.5 }
-        ];
-
-        /* Build particle list */
-        var particles = [];
-        rings.forEach(function (ring) {
-            for (var i = 0; i < ring.count; i++) {
-                particles.push({
-                    ring: ring,
-                    angle: (2 * Math.PI / ring.count) * i + ring.phaseOffset,
-                    hueOffset: (360 / ring.count) * i,
-                    baseHue: 190 + Math.random() * 60,
-                    size: 3 + Math.random() * 2
+        document.addEventListener('DOMContentLoaded', function () {
+            /* ── Tab switching ── */
+            window.showTab = function (tab) {
+                document.querySelectorAll('.tab-btn').forEach(function (btn) {
+                    btn.classList.remove('active');
                 });
+                document.querySelectorAll('.nav-panel').forEach(function (panel) {
+                    panel.classList.remove('active');
+                });
+                document.getElementById('tab-' + tab).classList.add('active');
+                document.getElementById('panel-' + tab).classList.add('active');
+            };
+
+            /* ── Canvas particle system ── */
+            var canvas = document.getElementById('particleCanvas');
+            var ctx = canvas.getContext('2d');
+
+            var mouseX = window.innerWidth / 2;
+            var mouseY = window.innerHeight / 2;
+            var centerX = mouseX;
+            var centerY = mouseY;
+            var isOverButton = false;
+            var globalHue = 0;
+            var lastTime = null;
+
+            function resizeCanvas() {
+                canvas.width = window.innerWidth;
+                canvas.height = window.innerHeight;
             }
-        });
+            resizeCanvas();
+            window.addEventListener('resize', resizeCanvas);
 
-        function animate(timestamp) {
-            if (!lastTime) { lastTime = timestamp; }
-            /* dt expressed as "frames" at a 60 fps baseline; clamped to avoid spiral on tab restore */
-            var dt = Math.min((timestamp - lastTime) / 16.667, 3);
-            lastTime = timestamp;
+            window.addEventListener('mousemove', function (e) {
+                mouseX = e.clientX;
+                mouseY = e.clientY;
+            });
 
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            /* Attach button hover listeners after DOM is ready */
+            try {
+                document.querySelectorAll('button').forEach(function (btn) {
+                    btn.addEventListener('mouseenter', function () { isOverButton = true; });
+                    btn.addEventListener('mouseleave', function () { isOverButton = false; });
+                });
+            } catch (e) { console.warn('Button listener error:', e); }
 
-            var lerpSpeed    = isOverButton ? 0.12  : 0.045;
-            var angularSpeed = isOverButton ? 0.055 : 0.018;
+            /* Orbit ring definitions: radius, particle count, initial phase */
+            var rings = [
+                { radius: 40,  count: 7,  phaseOffset: 0 },
+                { radius: 78,  count: 11, phaseOffset: 1.1 },
+                { radius: 118, count: 10, phaseOffset: 0.5 }
+            ];
 
-            /* Smoothly move center toward cursor */
-            centerX += (mouseX - centerX) * lerpSpeed * dt;
-            centerY += (mouseY - centerY) * lerpSpeed * dt;
+            /* Build particle list */
+            var particles = [];
+            rings.forEach(function (ring) {
+                for (var i = 0; i < ring.count; i++) {
+                    particles.push({
+                        ring: ring,
+                        angle: (2 * Math.PI / ring.count) * i + ring.phaseOffset,
+                        hueOffset: (360 / ring.count) * i,
+                        baseHue: 190 + Math.random() * 60,
+                        size: 3 + Math.random() * 2
+                    });
+                }
+            });
 
-            /* Advance rainbow hue when over a button */
-            if (isOverButton) {
-                globalHue = (globalHue + 1.5 * dt) % 360;
-            }
+            function animate(timestamp) {
+                if (!lastTime) { lastTime = timestamp; }
+                /* dt expressed as "frames" at a 60 fps baseline; clamped to avoid spiral on tab restore */
+                var dt = Math.min((timestamp - lastTime) / 16.667, 3);
+                lastTime = timestamp;
 
-            particles.forEach(function (p) {
-                p.angle += angularSpeed * dt;
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-                var px = centerX + Math.cos(p.angle) * p.ring.radius;
-                var py = centerY + Math.sin(p.angle) * p.ring.radius;
+                var lerpSpeed    = isOverButton ? 0.12  : 0.045;
+                var angularSpeed = isOverButton ? 0.055 : 0.018;
 
-                var h, s, l;
+                /* Smoothly move center toward cursor */
+                centerX += (mouseX - centerX) * lerpSpeed * dt;
+                centerY += (mouseY - centerY) * lerpSpeed * dt;
+
+                /* Advance rainbow hue when over a button */
                 if (isOverButton) {
-                    h = (globalHue + p.hueOffset) % 360;
-                    s = 100;
-                    l = 65;
-                } else {
-                    h = p.baseHue;
-                    s = 80;
-                    l = 70;
+                    globalHue = (globalHue + 1.5 * dt) % 360;
                 }
 
-                /* Soft glow halo */
-                var glowRadius = p.size * 4;
-                var glow = ctx.createRadialGradient(px, py, 0, px, py, glowRadius);
-                glow.addColorStop(0, 'hsla(' + h + ',' + s + '%,' + l + '%,0.6)');
-                glow.addColorStop(1, 'hsla(' + h + ',' + s + '%,' + l + '%,0)');
-                ctx.beginPath();
-                ctx.arc(px, py, glowRadius, 0, Math.PI * 2);
-                ctx.fillStyle = glow;
-                ctx.fill();
+                particles.forEach(function (p) {
+                    p.angle += angularSpeed * dt;
 
-                /* Solid core dot */
-                ctx.beginPath();
-                ctx.arc(px, py, p.size, 0, Math.PI * 2);
-                ctx.fillStyle = 'hsl(' + h + ',' + s + '%,' + l + '%)';
-                ctx.fill();
-            });
+                    var px = centerX + Math.cos(p.angle) * p.ring.radius;
+                    var py = centerY + Math.sin(p.angle) * p.ring.radius;
+
+                    var h, s, l;
+                    if (isOverButton) {
+                        h = (globalHue + p.hueOffset) % 360;
+                        s = 100;
+                        l = 65;
+                    } else {
+                        h = p.baseHue;
+                        s = 80;
+                        l = 70;
+                    }
+
+                    /* Soft glow halo */
+                    var glowRadius = p.size * 4;
+                    var glow = ctx.createRadialGradient(px, py, 0, px, py, glowRadius);
+                    glow.addColorStop(0, 'hsla(' + h + ',' + s + '%,' + l + '%,0.6)');
+                    glow.addColorStop(1, 'hsla(' + h + ',' + s + '%,' + l + '%,0)');
+                    ctx.beginPath();
+                    ctx.arc(px, py, glowRadius, 0, Math.PI * 2);
+                    ctx.fillStyle = glow;
+                    ctx.fill();
+
+                    /* Solid core dot */
+                    ctx.beginPath();
+                    ctx.arc(px, py, p.size, 0, Math.PI * 2);
+                    ctx.fillStyle = 'hsl(' + h + ',' + s + '%,' + l + '%)';
+                    ctx.fill();
+                });
+
+                requestAnimationFrame(animate);
+            }
 
             requestAnimationFrame(animate);
-        }
-
-        requestAnimationFrame(animate);
+        });
     </script>
 </body>
 </html>
