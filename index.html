@@ -1,158 +1,296 @@
 <!DOCTYPE html>
-<html>
-<meta>
-    <link rel="stylesheet" type="text/css" href="style.css">
-</meta>
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Andrew's Portal Workshop</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <style>
+        /* ── Index-page-only overrides ── */
+
+        /* Metallic gray background */
+        body {
+            background: linear-gradient(135deg, #2a2a2e 0%, #3c3c42 40%, #4a4a52 60%, #2e2e34 100%);
+            min-height: 100vh;
+        }
+
+        /* Metallic text gradient on the main title */
+        .portal-title {
+            background: linear-gradient(90deg, #c0c0c0, #e8e8e8, #a8a8a8, #d4d4d4);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        /* ── Tab bar ── */
+        .tab-bar {
+            display: flex;
+            margin: 20px 30px 0;
+            border-bottom: 2px solid rgba(255, 255, 255, 0.15);
+        }
+
+        .tab-btn {
+            background: none;
+            border: none;
+            border-bottom: 3px solid transparent;
+            color: rgba(255, 255, 255, 0.5);
+            cursor: pointer;
+            font-size: 0.9rem;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            margin: 0;
+            padding: 10px 22px;
+            text-transform: uppercase;
+            transition: color 0.2s, border-bottom-color 0.2s;
+        }
+
+        .tab-btn:hover {
+            color: rgba(255, 255, 255, 0.85);
+        }
+
+        .tab-btn.active {
+            border-bottom-color: #7eb8f7;
+            color: #fff;
+        }
+
+        /* ── Nav panels ── */
+        .nav-panel {
+            display: none;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin: 15px 30px 20px;
+        }
+
+        .nav-panel.active {
+            display: flex;
+        }
+
+        /* ── Glassy nav buttons ── */
+        .nav-btn {
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 8px;
+            color: #e0e0e0;
+            cursor: pointer;
+            font-size: 0.85rem;
+            margin: 0;
+            padding: 10px 16px;
+            transition: transform 0.15s, box-shadow 0.15s, background 0.15s;
+        }
+
+        .nav-btn:hover {
+            background: rgba(255, 255, 255, 0.16);
+            box-shadow: 0 0 14px rgba(126, 184, 247, 0.55);
+            transform: translateY(-2px);
+        }
+
+        /* ── Particle canvas overlay ── */
+        #particleCanvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 9999;
+        }
+    </style>
 </head>
 <body>
-    <h1>Welcome To My Portal!</h1>
+    <!-- Particle canvas (pointer-events: none so it doesn't block clicks) -->
+    <canvas id="particleCanvas"></canvas>
+
+    <h1 class="portal-title">Welcome To My Portal!</h1>
     <hr>
     <p>Hello colleagues and magister! My name is Andrew Lewis and I am a graduate student who came across this opportunity
     from my previous mentors. My goal is to become a seasoned game developer and have a place in
     the industry. Before I started my major in computer science, I was actually focused in graphic arts. This class feels
-    like a plesant combination of the two and I feel that I will be having a lot of fun with this. I look forward to an 
+    like a pleasant combination of the two and I feel that I will be having a lot of fun with this. I look forward to an
     amazing adventure with everyone.</p>
     <p>This is my first ever conjured portal that I'm hoping to master. I'm pretty proud of it, but it's lacking the bit
-    flair, color, and artistic touch that would reflect me. As time goes on, I will keep honing this craft and evolving 
+    flair, color, and artistic touch that would reflect me. As time goes on, I will keep honing this craft and evolving
     its potential.</p>
     <button onclick="_0x102641()">Click to Cast a Spell!</button>
     <p id="spellResult"></p>
+    <script src="spell.min.js" defer></script>
     <hr>
+
     <h4>Arcane Arts Demonstrations</h4>
-    <script src="spell.min.js"></script>
-    <button id="scroll2">Scroll 2 Spell: Triangle!</button>
-    <script>
-        document.getElementById("scroll2").onclick = () => {
-            window.location.href = "scroll2.html";
-        };
-    </script>
-    <button id="scroll3">Scroll 3 Spell: Kirby LERPy!</button>
-    <script>
-        document.getElementById("scroll3").onclick = () => {
-            window.location.href = "scroll3.html";
-        };
-    </script>
-    <button id="scroll4">Scroll 4 Spell: Geometric Displacement</button>
-    <script>
-        document.getElementById("scroll4").onclick = () => {
-            window.location.href = "scroll4.html";
-        };
-    </script>
-    <button id="project2">Project 2: Arcane Planetarium</button>
-    <script>
-        document.getElementById("project2").onclick = () => {
-            window.location.href = "project2.html";
-        };
-    </script>
-    <button id="scroll5">Scroll 5 Spell: Electric Grid</button>
-    <script>
-        document.getElementById("scroll5").onclick = () => {
-            window.location.href = "scroll5.html";
-        };
-    </script>
-     <button id="project3">Project 3: Summoning Gate</button>
-    <script>
-        document.getElementById("project3").onclick = () => {
-            window.location.href = "project3.html";
-        };
-    </script>
-    <button id="scroll6">Scroll 6: Fire!</button>
-    <script>
-        document.getElementById("scroll6").onclick = () => {
-            window.location.href = "scroll6.html";
-        };
-    </script>
-    <button id="scroll7">Scroll 7: Mass Spring Web</button>
-    <script>
-        document.getElementById("scroll7").onclick = () => {
-            window.location.href = "scroll7.html";
-        };
-    </script>
-    <button id="project4">Project 4</button>
-    <script>
-        document.getElementById("project4").onclick = () => {
-            window.location.href = "project4.html";
-        };
-    </script>
-    <button id="scroll10">Scroll 10</button>
-    <script>
-        document.getElementById("scroll10").onclick = () => {
-            window.location.href = "scroll10.html";
-        };
-    </script>
-    <button id="scroll11">Scroll 11</button>
-    <script>
-        document.getElementById("scroll11").onclick = () => {
-            window.location.href = "scroll11.html";
-        };
-    </script>
-    <button id="scroll12">Scroll 12</button>
-    <script>
-        document.getElementById("scroll12").onclick = () => {
-            window.location.href = "scroll12.html";
-        };
-    </script>
-    <button id="scroll13">Scroll 13</button>
-    <script>
-        document.getElementById("scroll13").onclick = () => {
-            window.location.href = "scroll13.html";
-        };
-    </script>
-    <button id="scroll14">Scroll 14</button>
-    <script>
-        document.getElementById("scroll14").onclick = () => {
-            window.location.href = "scroll14.html";
-        };
-    </script>
-    <button id="scroll15">Scroll 15</button>
-    <script>
-        document.getElementById("scroll15").onclick = () => {
-            window.location.href = "scroll15.html";
-        };
-    </script>
-    <button id="project6">Project 6</button>
-    <script>
-        document.getElementById("project6").onclick = () => {
-            window.location.href = "project6.html";
-        };
-    </script>
-    <button id="project7">Project 7</button>
-    <script>
-        document.getElementById("project7").onclick = () => {
-            window.location.href = "project7.html";
-        };
-    </script>
-    <button id="project8">Project 8</button>
-    <script>
-        document.getElementById("project8").onclick = () => {
-            window.location.href = "project8.html";
-        };
-    </script>
-    <button id="project9">Project 9</button>
-    <script>
-        document.getElementById("project9").onclick = () => {
-            window.location.href = "project9.html";
-        };
-    </script>
+
+    <!-- Tab bar -->
+    <div class="tab-bar">
+        <button class="tab-btn active" id="tab-scrolls" onclick="showTab('scrolls')">Scrolls</button>
+        <button class="tab-btn" id="tab-projects" onclick="showTab('projects')">Projects</button>
+    </div>
+
+    <!-- Scrolls panel -->
+    <div class="nav-panel active" id="panel-scrolls">
+        <button class="nav-btn" onclick="window.location.href='scroll2.html'">Scroll 2 — Triangle</button>
+        <button class="nav-btn" onclick="window.location.href='scroll3.html'">Scroll 3 — Kirby LERPy!</button>
+        <button class="nav-btn" onclick="window.location.href='scroll4.html'">Scroll 4 — Geometric Displacement</button>
+        <button class="nav-btn" onclick="window.location.href='scroll5.html'">Scroll 5 — Electric Grid</button>
+        <button class="nav-btn" onclick="window.location.href='scroll6.html'">Scroll 6 — Fire!</button>
+        <button class="nav-btn" onclick="window.location.href='scroll7.html'">Scroll 7 — Mass Spring Web</button>
+        <button class="nav-btn" onclick="window.location.href='scroll10.html'">Scroll 10</button>
+        <button class="nav-btn" onclick="window.location.href='scroll11.html'">Scroll 11</button>
+        <button class="nav-btn" onclick="window.location.href='scroll12.html'">Scroll 12</button>
+        <button class="nav-btn" onclick="window.location.href='scroll13.html'">Scroll 13</button>
+        <button class="nav-btn" onclick="window.location.href='scroll14.html'">Scroll 14</button>
+        <button class="nav-btn" onclick="window.location.href='scroll15.html'">Scroll 15</button>
+    </div>
+
+    <!-- Projects panel -->
+    <div class="nav-panel" id="panel-projects">
+        <button class="nav-btn" onclick="window.location.href='project1.html'">Project 1 — Static Vision of Japan?!</button>
+        <button class="nav-btn" onclick="window.location.href='project2.html'">Project 2 — Arcane Planetarium</button>
+        <button class="nav-btn" onclick="window.location.href='project3.html'">Project 3 — Summoning Gate</button>
+        <button class="nav-btn" onclick="window.location.href='project4.html'">Project 4</button>
+        <button class="nav-btn" onclick="window.location.href='project6.html'">Project 6</button>
+        <button class="nav-btn" onclick="window.location.href='project7.html'">Project 7</button>
+        <button class="nav-btn" onclick="window.location.href='project8.html'">Project 8</button>
+        <button class="nav-btn" onclick="window.location.href='project9.html'">Project 9</button>
+    </div>
+
     <hr>
     <h4>My Quest To Japan...</h4>
-    <p>I initially went for a nature theme, but somewhere along the line, I thought it would be cool to tie in the 
-    place that I wanted to visit the most in the world. This led me to illustrating a bonzai tree with flowers in a 
-    flower pot. This contains squares/rectangles, circles/ovals, and triangles. I wanted to fill up the background a 
-    bit, so I put in mountains and the red sun that is emblematic of Japan's flag. A way I can see the them improving is 
-    learning how to make more defined, stylized renders that can give the image some texture. Maybe have the image look 
+    <p>I initially went for a nature theme, but somewhere along the line, I thought it would be cool to tie in the
+    place that I wanted to visit the most in the world. This led me to illustrating a bonzai tree with flowers in a
+    flower pot. This contains squares/rectangles, circles/ovals, and triangles. I wanted to fill up the background a
+    bit, so I put in mountains and the red sun that is emblematic of Japan's flag. A way I can see the theme improving is
+    learning how to make more defined, stylized renders that can give the image some texture. Maybe have the image look
     like parchment (weathered and preserved).</p>
-    <p>Something I thought that was impressive from me was that I enabled my geometry-based JavaScript files have the 
-    ability to stretch and scale freely. This can be seen with the circles on the tree as well as the triangles of 
-    the mountains and the dirt in the tree pot. Another accessible option is to allow the shapes to define their own 
+    <p>Something I thought that was impressive from me was that I enabled my geometry-based JavaScript files have the
+    ability to stretch and scale freely. This can be seen with the circles on the tree as well as the triangles of
+    the mountains and the dirt in the tree pot. Another accessible option is to allow the shapes to define their own
     individual colors.</p>
-    <button id="project1">Project 1: Static Vision of Japan?!</button>
+
     <script>
-        document.getElementById("project1").onclick = () => {
-            window.location.href = "project1.html";
-        };
+        document.addEventListener('DOMContentLoaded', function () {
+            /* ── Tab switching ── */
+            window.showTab = function (tab) {
+                document.querySelectorAll('.tab-btn').forEach(function (btn) {
+                    btn.classList.remove('active');
+                });
+                document.querySelectorAll('.nav-panel').forEach(function (panel) {
+                    panel.classList.remove('active');
+                });
+                document.getElementById('tab-' + tab).classList.add('active');
+                document.getElementById('panel-' + tab).classList.add('active');
+            };
+
+            /* ── Canvas particle system ── */
+            var canvas = document.getElementById('particleCanvas');
+            var ctx = canvas.getContext('2d');
+
+            var mouseX = window.innerWidth / 2;
+            var mouseY = window.innerHeight / 2;
+            var centerX = mouseX;
+            var centerY = mouseY;
+            var isOverButton = false;
+            var globalHue = 0;
+            var lastTime = null;
+
+            function resizeCanvas() {
+                canvas.width = window.innerWidth;
+                canvas.height = window.innerHeight;
+            }
+            resizeCanvas();
+            window.addEventListener('resize', resizeCanvas);
+
+            window.addEventListener('mousemove', function (e) {
+                mouseX = e.clientX;
+                mouseY = e.clientY;
+            });
+
+            /* Attach button hover listeners after DOM is ready */
+            try {
+                document.querySelectorAll('button').forEach(function (btn) {
+                    btn.addEventListener('mouseenter', function () { isOverButton = true; });
+                    btn.addEventListener('mouseleave', function () { isOverButton = false; });
+                });
+            } catch (e) { console.warn('Button listener error:', e); }
+
+            /* Orbit ring definitions: radius, particle count, initial phase
+               Radii are half of the original values (20, 39, 59 instead of 40, 78, 118) */
+            var rings = [
+                { radius: 20,  count: 7,  phaseOffset: 0 },
+                { radius: 39,  count: 11, phaseOffset: 1.1 },
+                { radius: 59,  count: 10, phaseOffset: 0.5 }
+            ];
+
+            /* Build particle list */
+            var particles = [];
+            rings.forEach(function (ring) {
+                for (var i = 0; i < ring.count; i++) {
+                    particles.push({
+                        ring: ring,
+                        angle: (2 * Math.PI / ring.count) * i + ring.phaseOffset,
+                        hueOffset: (360 / ring.count) * i,
+                        baseHue: 190 + Math.random() * 60,
+                        size: 3 + Math.random() * 2
+                    });
+                }
+            });
+
+            function animate(timestamp) {
+                if (!lastTime) { lastTime = timestamp; }
+                /* dt expressed as "frames" at a 60 fps baseline; clamped to avoid spiral on tab restore */
+                var dt = Math.min((timestamp - lastTime) / 16.667, 3);
+                lastTime = timestamp;
+
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+                var lerpSpeed    = isOverButton ? 0.12  : 0.045;
+                var angularSpeed = isOverButton ? 0.055 : 0.018;
+
+                /* Smoothly move center toward cursor */
+                centerX += (mouseX - centerX) * lerpSpeed * dt;
+                centerY += (mouseY - centerY) * lerpSpeed * dt;
+
+                /* Advance rainbow hue when over a button */
+                if (isOverButton) {
+                    globalHue = (globalHue + 1.5 * dt) % 360;
+                }
+
+                particles.forEach(function (p) {
+                    p.angle += angularSpeed * dt;
+
+                    var px = centerX + Math.cos(p.angle) * p.ring.radius;
+                    var py = centerY + Math.sin(p.angle) * p.ring.radius;
+
+                    var h, s, l;
+                    if (isOverButton) {
+                        h = (globalHue + p.hueOffset) % 360;
+                        s = 100;
+                        l = 65;
+                    } else {
+                        h = p.baseHue;
+                        s = 80;
+                        l = 70;
+                    }
+
+                    /* Soft glow halo */
+                    var glowRadius = p.size * 4;
+                    var glow = ctx.createRadialGradient(px, py, 0, px, py, glowRadius);
+                    glow.addColorStop(0, 'hsla(' + h + ',' + s + '%,' + l + '%,0.6)');
+                    glow.addColorStop(1, 'hsla(' + h + ',' + s + '%,' + l + '%,0)');
+                    ctx.beginPath();
+                    ctx.arc(px, py, glowRadius, 0, Math.PI * 2);
+                    ctx.fillStyle = glow;
+                    ctx.fill();
+
+                    /* Solid core dot */
+                    ctx.beginPath();
+                    ctx.arc(px, py, p.size, 0, Math.PI * 2);
+                    ctx.fillStyle = 'hsl(' + h + ',' + s + '%,' + l + '%)';
+                    ctx.fill();
+                });
+
+                requestAnimationFrame(animate);
+            }
+
+            requestAnimationFrame(animate);
+        });
     </script>
 </body>
 </html>
