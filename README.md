@@ -83,7 +83,7 @@ Something I thought that was impressive from me was that I enabled my geometry-b
 ---
 
 ## Volume Rendering & Minecraft Voxel Generation (Project 7 Requirements Completed):
-- mplement ray marching using either an orthogonal camera or a pinhole camera model and show correct basic volume rendering (e.g. using maximum intensity as the transfer function)
+- Implement ray marching using either an orthogonal camera or a pinhole camera model and show correct basic volume rendering (e.g. using maximum intensity as the transfer function)
 - Customize the volume data loader to load new volume data (i.e. showing a different data loaded and visualized)
 - Procedural generation of volume data. (i.e. showing a different data generated and visualized)
 - Implement the linear transfer function and correctly visualize the results
@@ -95,3 +95,20 @@ Something I thought that was impressive from me was that I enabled my geometry-b
 - (Repeatable, 1 point per effect) Use volume rendering to implement and visualize a (Perlin noise-based) special effects e.g. cloud, fog, fire, etc.
   - Clouds, fire, smoke (Non-dynamic)
 - Compose an interesting 3D scene
+
+---
+
+## Light & Texture (Project 8 Requirements Completed):
+- Implement and demonstrate a point light
+- Implement and demonstrate a directional light
+- Implement and demonstrate a spotlight
+- Implement and demonstrate Lambertian shading (aka flat shading) with diffuse colors
+- Implement and demonstrate Phong shading with diffuse, specular, and ambient colors
+- Implement and demonstrate Toon shading (aka cel shading) on top of Phong shading
+- (Repeatable, 1 point per shading model) Implement and demonstrate another shading model (e.g., Blinn-Phong, Cook-Torrance)
+  - Did both Blinn-Phong and Cook-Torrance
+- Implement and demonstrate diffuse texture mapping
+- Implement and demonstrate bump mapping to simulate surface roughness
+- Implement and demonstrate environment mapping (aka cube mapping or spherical mapping) to simulate an environment
+- Implement and demonstrate procedural textures
+  - Did Checkerboard
